@@ -3,7 +3,8 @@ from selene import have, command
 from demoqa.model.controls import dropdown_list
 from demoqa.utils import work_with_path
 from demoqa.model.controls import option_select
-
+from demoqa.model.controls import radio
+from demoqa.model.controls import checkbox
 
 def send_file(locator, file):
     path = work_with_path.get_path(file)
@@ -33,7 +34,7 @@ def add_subject(subject):
 
 
 def choose_hobby(hobby):
-    browser.all('[for^=hobbies-checkbox]').element_by(have.text(hobby)).click()
+    checkbox.click_checkbox('[for^=hobbies-checkbox]', hobby)
 
 
 def add_state(value):
@@ -49,7 +50,7 @@ def submit():
 
 
 def choose_gender(gender):
-    browser.all('[name=gender]').element_by(have.value(gender)).element('..').click()
+    radio.radio_button('[name=gender]', gender)
 
 
 def select_month(month):
